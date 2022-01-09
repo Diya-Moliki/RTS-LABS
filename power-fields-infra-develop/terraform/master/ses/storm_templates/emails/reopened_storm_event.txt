@@ -1,0 +1,13 @@
+ACTIVE EVENT
+{{eventName}}
+
+Has been reopened by {{initiatorName}}.
+
+DATE OF IMPACT
+{{startDate}} - {{endDate}}
+
+HASHTAGS
+{{hashtags}}
+
+EVENT LINK
+{{eventUrl}}

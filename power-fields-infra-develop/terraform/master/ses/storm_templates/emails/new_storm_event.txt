@@ -1,0 +1,13 @@
+NEW EVENT
+{{eventName}}
+
+Has been opened by {{initiatorName}}.
+
+DATE OF IMPACT
+{{startDate}} - {{endDate}}
+
+HASHTAGS
+{{hashtags}}
+
+EVENT LINK
+{{eventUrl}}

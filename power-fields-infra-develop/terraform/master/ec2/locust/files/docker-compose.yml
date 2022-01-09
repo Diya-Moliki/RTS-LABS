@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  master:
+    image: locustio/locust:1.1.1
+    ports:
+     - "8089:8089"
+    volumes:
+      - ./:/opt/locust
+    command: -f /opt/locust/locustfile.py --master -H https://rts.perf.powerfields-dev.io
+    # logging: 
+    #   driver: awslogs
+    #   options: 
+    #     awslogs-region: us-east-1
+    #     awslogs-group: locust_logs
+    #     awslogs-stream: locust_master
+  
+  worker:
+    image: locustio/locust:1.1.1
+    volumes:
+      - ./:/opt/locust
+    command: -f /opt/locust/locustfile.py --worker --master-host master
+    # logging:
+    #   driver: awslogs
+    #   options:
+    #     awslogs-region: us-east-1
+    #     awslogs-group: locust_logs
+    #     awslogs-stream: locust_worker
+

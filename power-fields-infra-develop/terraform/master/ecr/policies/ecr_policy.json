@@ -1,0 +1,49 @@
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "aws_access",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::117274604142:root",
+          "arn:aws:iam::940183618109:root"
+        ]
+      },
+      "Action": [
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:PutImage",
+        "ecr:InitiateLayerUpload",
+        "ecr:UploadLayerPart",
+        "ecr:CompleteLayerUpload",
+        "ecr:DescribeRepositories",
+        "ecr:GetRepositoryPolicy",
+        "ecr:ListImages",
+        "ecr:DescribeImages",
+        "ecr:DeleteRepository",
+        "ecr:SetRepositoryPolicy",
+        "ecr:DeleteRepositoryPolicy",
+        "ecr:GetLifecyclePolicy",
+        "ecr:PutLifecyclePolicy",
+        "ecr:DeleteLifecyclePolicy",
+        "ecr:GetLifecyclePolicyPreview",
+        "ecr:StartLifecyclePolicyPreview"
+      ]
+    },
+    {
+      "Sid": "deny_delete",
+      "Effect": "Deny",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::117274604142:root",
+          "arn:aws:iam::940183618109:root"
+        ]
+      },
+      "Action": [
+        "ecr:BatchDeleteImage"
+      ]
+    }
+  ]
+}

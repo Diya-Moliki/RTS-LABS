@@ -1,0 +1,5 @@
+Hi {{toName}},
+
+{{fromName}} ({{fromEmail}}) recently shared a document with you.
+
+{{url}}

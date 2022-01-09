@@ -1,0 +1,118 @@
+[
+  {
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${APP_LOG_GROUP}",
+        "awslogs-datetime-format": "%Y-%m-%d %H:%M:%S",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    },
+    "volumesFrom": [],
+    "extraHosts": null,
+    "dnsServers": null,
+    "disableNetworking": null,
+    "dnsSearchDomains": null,
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "protocol": "tcp"
+      },
+      {
+        "containerPort": 22,
+        "protocol": "tcp"
+      }
+    ],
+    "hostname": null,
+    "essential": true,
+    "entryPoint": [],
+    "mountPoints": [],
+    "name": "app",
+    "ulimits": null,
+    "dockerSecurityOptions": null,
+    "environment": ${environment_variables},
+    "links": [],
+    "workingDirectory": null,
+    "readonlyRootFilesystem": null,
+    "image": "${ECR_IMG_PATH}",
+    "command": [],
+    "user": null,
+    "dockerLabels": null,
+    "privileged": null,
+    "secrets": [
+      {
+        "name": "APPLICATION_KEYSTORE_LOCATION",
+        "valueFrom": "${APPLICATION_KEYSTORE_LOCATION}"
+      },
+      {
+        "name": "APPLICATION_KEYSTORE_PASSWORD",
+        "valueFrom": "${APPLICATION_KEYSTORE_PASSWORD}"
+      },
+      {
+        "name": "APPLICATION_KEYSTORE_KEY_PASSWORD",
+        "valueFrom": "${APPLICATION_KEYSTORE_KEY_PASSWORD}"
+      },
+      {
+        "name": "SPRING_DATASOURCE_USERNAME",
+        "valueFrom": "${SPRING_DATASOURCE_USERNAME}"
+      },
+      {
+        "name": "SPRING_DATASOURCE_PASSWORD",
+        "valueFrom": "${SPRING_DATASOURCE_PASSWORD}"
+      },
+      {
+        "name": "JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64SECRET",
+        "valueFrom": "${JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64SECRET}"
+      }
+    ]
+  },
+  {
+    "name": "xray-daemon",
+    "image": "117274604142.dkr.ecr.us-east-1.amazonaws.com/aws/xray-daemon:latest",
+    "cpu": 32,
+    "memory": 256,
+    "essential": false,
+    "portMappings": [
+      {
+        "containerPort": 2000,
+        "protocol": "udp"
+      },
+      {
+        "containerPort": 2000,
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-create-group": "True",
+        "awslogs-group": "${SIDECART_LOG_GROUPS}",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  },
+  {
+    "name": "cloudwatch-agent",
+    "image": "public.ecr.aws/cloudwatch-agent/cloudwatch-agent:latest",
+    "cpu": 32,
+    "memory": 256,
+    "essential": false,
+    "secrets": [
+      {
+        "name": "CW_CONFIG_CONTENT",
+        "valueFrom": "${CW_AGENT_PARAM_STORE_NAME}"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-create-group": "True",
+        "awslogs-group": "${SIDECART_LOG_GROUPS}",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }
+]

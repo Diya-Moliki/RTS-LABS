@@ -1,0 +1,16 @@
+CLOSED EVENT
+{{eventName}}
+
+Has been closed by {{initiatorName}}.
+
+DATE OF IMPACT
+{{startDate}} - {{endDate}}
+
+HASHTAGS
+{{hashtags}}
+
+PROGRESS
+{{progress}}
+
+EVENT LINK
+{{eventUrl}}

@@ -1,0 +1,5 @@
+Hi {{name}},
+
+Your account has been created.
+Please continue below to activate and set your password.
+{{url}}

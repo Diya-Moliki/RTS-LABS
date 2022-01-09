@@ -1,0 +1,6 @@
+Hi {{receiverFullName}},
+
+{{documentOwnerFullName}} recently completed a document. 
+This email is to notify you that {{documentOwnerFullName}} submitted the {{formName}} form on {{submissionDate}}.
+
+Document URL: {{url}}

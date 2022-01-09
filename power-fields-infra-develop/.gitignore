@@ -1,0 +1,34 @@
+.*
+!/.gitignore
+.terraform
+*.tfstate*
+.kitchen
+terraform.tfstate
+Gemfile.lock
+account.json
+.terraform
+*tfstate*
+setup/*
+crash.log
+dist
+*.zip
+!lambda*.zip
+logs
+*.srl
+*.crt
+*.csr
+*.key
+*.pub
+*.pem
+*.swp
+# A silly MacOS/OS-X hidden file that is the bane of all repos.
+.DS_Store
+# .idea is the user setting configuration directory for IntelliJ, and related products. 
+.idea
+/.project
+secret/*
+secret*
+/lambdas/sqs-cleanup/sqs-cleanup
+*.plan
+!*.envrc
+!*secrets.tf
